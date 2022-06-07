@@ -1,18 +1,88 @@
-<div>
-    <h2>Stickytag</h2>
-    <div>
-        <label for="tagContent">Tag content:</label>
-        <input id="tagContent" type="text"
-               placeholder="Add text/emoji for tag">
+<!-- Css library recommended by Figma-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
+<div class="stickytag-wrapper">
+    <div class="content">
+        <h2>Stickytag</h2>
+        <p>Select one or more sticky notes to which you want to attach a tag.</p>
+        <div>
+            <label for="tagContent" class="label">Tag content</label>
+            <input id="tagContent" type="text" class="input__field"
+                   placeholder="Add text and/or emojis for the tag">
+        </div>
+        <div class="emojis">
+            <div onclick="addEmoji(this)">&#128048;</div> <!--Bunny-->
+            <div onclick="addEmoji(this)">&#128046;</div> <!--Cow-->
+            <div onclick="addEmoji(this)">&#128047;</div> <!--Lion-->
+            <div onclick="addEmoji(this)">&#128049;</div> <!--Cat-->
+            <div onclick="addEmoji(this)">&#128054;</div> <!--Dog-->
+            <div onclick="addEmoji(this)">&#128060;</div> <!--Panda-->
+            <div onclick="addEmoji(this)">&#128055;</div> <!--Pig-->
+            <div onclick="addEmoji(this)">&#128056;</div> <!--Frog-->
+        </div>
     </div>
-    <button id="addTag">Add tag</button>
+    <div class="button-wrapper">
+        <button id="addTag" class='button button--primary'>Add tag</button>
+    </div>
 </div>
 
+<style>
+    .stickytag-wrapper {
+        height: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .stickytag-wrapper h2 {
+        margin-top: 0;
+    }
+
+    .stickytag-wrapper input.input__field {
+        /*font-size: 16px;*/
+        height: 40px;
+        border: 1px solid rgba(0, 0, 0, 1);
+    }
+
+    .stickytag-wrapper input.input__field:hover {
+        border-color: #18a0fb;
+    }
+
+    .stickytag-wrapper .button-wrapper {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .stickytag-wrapper .emojis {
+        margin-top: 4px;
+    }
+
+    .stickytag-wrapper .emojis * {
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        text-align: center;
+        line-height: 2.5;
+        border-radius: 4px;
+    }
+
+    .stickytag-wrapper .emojis div:hover {
+        background-color: rgba(24, 145, 251, .3);
+        cursor: pointer;
+    }
+
+</style>
+
 <script>
+    const tagContentInput = document.getElementById('tagContent');
+
+    function addEmoji(element) {
+        tagContentInput.value += element.textContent;
+    }
+
     document.getElementById('addTag').onclick = () => {
-        const tagContentInput = document.getElementById('tagContent');
         const tagContent = tagContentInput.value;
         parent.postMessage({pluginMessage: {type: 'addTag', tagContent}}, '*')
     }
-
 </script>
