@@ -1,11 +1,13 @@
-<h2>Stickytag</h2>
-<p>
-    <label>Tag content:</label>
-<div>Tag content</div>
-<input id="tagContent" type="input"
-       placeholder="Add text/emoji for tag"></p>
-<button id="addTag">Add tag</button>
+<div>
+    <h2>Stickytag</h2>
+    <div>
+        <label for="tagContent">Tag content:</label>
+        <input id="tagContent" type="text"
+               placeholder="Add text/emoji for tag">
+    </div>
+    <button id="addTag">Add tag</button>
 </div>
+
 <script>
     document.getElementById('addTag').onclick = () => {
         const tagContentInput = document.getElementById('tagContent');
