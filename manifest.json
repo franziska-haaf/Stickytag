@@ -1,0 +1,10 @@
+{
+  "name": "Stickytag",
+  "id": "1116001176372517048",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figjam"
+  ],
+  "ui": "ui.html"
+}
