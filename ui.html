@@ -1,17 +1,16 @@
-<h2>Shape & Connector Creator</h2>
-<p>Count: <input id="count" type="number" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<h2>Stickytag</h2>
+<p>
+    <label>Tag content:</label>
+<div>Tag content</div>
+<input id="tagContent" type="input"
+       placeholder="Add text/emoji for tag"></p>
+<button id="addTag">Add tag</button>
+</div>
 <script>
-
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-shapes', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
+    document.getElementById('addTag').onclick = () => {
+        const tagContentInput = document.getElementById('tagContent');
+        const tagContent = tagContentInput.value;
+        parent.postMessage({pluginMessage: {type: 'addTag', tagContent}}, '*')
+    }
 
 </script>
