@@ -14,6 +14,9 @@ figma.ui.onmessage = async msg => {
 
         selectedStickies.forEach(sticky => {
             if (sticky.type === "STICKY") {
+                //todo what to do if sticky.text.fontSize === figma.mixed
+                console.log(sticky.text.fontSize)
+                debugger;
                 sticky.text.characters ? (sticky.text.characters += '\n\n' + msg.tagContent) : (sticky.text.characters += msg.tagContent)
             }
         })
